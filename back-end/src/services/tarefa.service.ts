@@ -2,6 +2,7 @@
 import { title } from "node:process";
 import { prisma } from "../../lib/prisma";
 import { HttpError } from "../core/httpError";
+import { parse } from "node:path";
 
 export class TarefaService {
     static async create(body: any) {
@@ -28,7 +29,7 @@ export class TarefaService {
     static async getAllFromUser(userId: string) {
         const tarefas = await prisma.tarefa.findMany({
             where: {
-                userId: userId
+                userId: parseInt(userId)
             }
         });
         return tarefas;
@@ -38,14 +39,14 @@ export class TarefaService {
         // deletar tarefas com subtarefas associadas
         await prisma.subTarefa.deleteMany({
             where: {
-                tarefaId: tarefaId
+                tarefaId: parseInt(tarefaId)
             }
         });
 
         // deletar a tarefa
         await prisma.tarefa.delete({
             where: {
-                id: tarefaId
+                id: parseInt(tarefaId)
             }
         });
     }
