@@ -13,7 +13,7 @@ export class SubTarefaService {
         const subTarefaDB = await prisma.subTarefa.create({
            data: {
                title: title,
-               tarefaId: tarefaId,
+               tarefaId: parseInt(tarefaId),
            },
         });
     }
@@ -21,7 +21,7 @@ export class SubTarefaService {
     static async getAllFromTarefa(tarefaId: string) {
         const subTarefas = await prisma.subTarefa.findMany({
             where: {
-                tarefaId: tarefaId
+                tarefaId: parseInt(tarefaId)
             }
         });
         return subTarefas;
@@ -36,7 +36,7 @@ export class SubTarefaService {
 
         await prisma.subTarefa.update({
            where: {
-               id: subTarefaId,
+               id: parseInt(subTarefaId),
            },
            data: {
                title: title,
@@ -47,7 +47,7 @@ export class SubTarefaService {
     static async delete(subTarefaId: string) {
         await prisma.subTarefa.delete({
             where: {
-                id: subTarefaId,
+                id: parseInt(subTarefaId),
             },
         });
     }
