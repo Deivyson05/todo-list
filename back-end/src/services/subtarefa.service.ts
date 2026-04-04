@@ -27,8 +27,8 @@ export class SubTarefaService {
         return subTarefas;
     }
 
-    static async edit(subTarefaId: string, body: any) {
-        const { title } = body;
+    static async edit(body: any) {
+        const { id, title } = body;
 
         if (!title) {
            throw new HttpError("Title is required", 400);
@@ -36,7 +36,7 @@ export class SubTarefaService {
 
         await prisma.subTarefa.update({
            where: {
-               id: parseInt(subTarefaId),
+               id: id,
            },
            data: {
                title: title,

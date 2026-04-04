@@ -21,7 +21,7 @@ export class SubTarefaController {
 
     static async edit(req: Request, res: Response) {
         await middleware(async () => {
-            await SubTarefaService.edit(req.params.subTarefaId, req.body);
+            await SubTarefaService.edit(req.body);
             return res.status(200).json({ message: "edited successfully" });
         }, res);
     }

@@ -21,10 +21,10 @@ model Tarefa {
   title        String
   description  String?
   dataAgendada DateTime?
-  userId       Int
+  userToken    String
   concluida    Boolean     @default(false)
   subTarefas   SubTarefa[]
-  user         User        @relation(fields: [userId], references: [id])
+  user         User        @relation(fields: [userToken], references: [token])
 }
 
 model SubTarefa {

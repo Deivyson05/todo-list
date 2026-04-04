@@ -6,10 +6,10 @@ import { parse } from "node:path";
 
 export class TarefaService {
     static async create(body: any) {
-        const { title, description, dataAgendada, userId } = body;
+        const { title, description, dataAgendada, userToken } = body;
 
-        if (!title || !userId) {
-            throw new HttpError("Title, description and userId are required", 400);
+        if (!title || !userToken) {
+            throw new HttpError("Title, description and userToken are required", 400);
         }
 
         const tarefaDB = await prisma.tarefa.create({
@@ -17,7 +17,7 @@ export class TarefaService {
                 title: title,
                 description: description,
                 dataAgendada: dataAgendada,
-                userId: userId,
+                userToken: userToken,
                 subTarefas: {},
             },
             include: {
@@ -26,27 +26,46 @@ export class TarefaService {
         });
     }
 
-    static async getAllFromUser(userId: string) {
+    static async getAllFromUser(userToken: string) {
         const tarefas = await prisma.tarefa.findMany({
             where: {
-                userId: parseInt(userId)
+                userToken: userToken
             }
         });
         return tarefas;
     }
 
-    static async delete(tarefaId: string) {
+    static async edit(body: any) {
+        const { id, title, description, dataAgendada } = body;
+
+        if (!id || !title) {
+            throw new HttpError("Id and title are required", 400);
+        }
+
+        await prisma.tarefa.update({
+            where: {
+                id: id
+            },
+            data: {
+                title: title,
+                description: description,
+                dataAgendada: dataAgendada
+            }
+        });
+    }
+
+    static async delete(tarefaId: number) {
         // deletar tarefas com subtarefas associadas
         await prisma.subTarefa.deleteMany({
             where: {
-                tarefaId: parseInt(tarefaId)
+                tarefaId: tarefaId
             }
         });
 
         // deletar a tarefa
         await prisma.tarefa.delete({
             where: {
-                id: parseInt(tarefaId)
+                id: tarefaId
             }
         });
     }
