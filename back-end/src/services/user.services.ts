@@ -50,4 +50,16 @@ export class UserService {
 
         return user.token;
     }
+
+    static async getUser(token: string) {
+        const user = await prisma.user.findUnique({
+            where: {
+                token: token,
+            },
+            include: {
+                tarefas: true,
+            },
+        });
+        return user;
+    }
 }

@@ -17,4 +17,12 @@ export class UserController {
             return res.status(200).json({ token });
         }, res);
     }
+
+    static async getUser(req: Request, res: Response) {
+        middleware(async () => {
+            const token = req.params.token;
+            const user = await UserService.getUser(token);
+            return res.status(200).json(user);
+        }, res);
+    }
 }

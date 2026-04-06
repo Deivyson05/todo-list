@@ -6,5 +6,6 @@ const userRouter = Router();
 
 userRouter.post("/", UserController.createUser);
 userRouter.post("/login", UserController.login);
+userRouter.get("/:token", UserController.getUser);
 
 export default userRouter;
