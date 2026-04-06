@@ -9,7 +9,7 @@
         "unicap",
         "serviço"
     ],
-    "main": "src/index.ts",
+    "main": "api/index.ts",
     "type": "module",
     "dependencies": {
         "@prisma/adapter-pg": "^7.5.0",
@@ -28,8 +28,8 @@
         "tsx": "^4.17.0"
     },
     "scripts": {
-        "start": "tsx src/index.ts",
-        "dev": "tsx watch src/index.ts",
+        "start": "tsx api/index.ts",
+        "dev": "tsx watch api/index.ts",
         "build": "tsc",
         "nova-entidade": "tsx cli/novaEntidade.ts",
         "excluir-entidade": "tsx cli/excluirEntidade.ts"

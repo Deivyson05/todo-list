@@ -12,7 +12,7 @@
         ] // <- isso faz o TS reconhecer process, __dirname, etc.
     },
     // "include": [
-    //     "src/**/*"
+    //     "api/**/*"
     // ],
     "exclude": [
         "node_modules"
