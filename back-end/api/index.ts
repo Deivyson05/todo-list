@@ -23,3 +23,5 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Teste n1 ${port}`);
 });
+
+export default app;
