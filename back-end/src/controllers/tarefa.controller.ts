@@ -26,6 +26,13 @@ export class TarefaController {
         }, res);
     }
 
+    static async updateStatus(req: Request, res: Response) {
+        middleware(async() => {
+            await TarefaService.updateStatus(parseInt(req.params.id));
+            return res.status(200).json({ message: "updated successfully" });
+        }, res);
+    }
+
     static async delete(req: Request, res: Response) {
         middleware(async() => {
             await TarefaService.delete(parseInt(req.params.id));

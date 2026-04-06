@@ -26,6 +26,13 @@ export class SubTarefaController {
         }, res);
     }
 
+    static async updateStatus(req: Request, res: Response) {
+        await middleware(async () => {
+            await SubTarefaService.updateStatus(parseInt(req.params.id));
+            return res.status(200).json({ message: "updated successfully" });
+        }, res);
+    }
+
     static async delete(req: Request, res: Response) {
         await middleware(async () => {
             await SubTarefaService.delete(req.params.subTarefaId);

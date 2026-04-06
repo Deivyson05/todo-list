@@ -44,6 +44,27 @@ export class SubTarefaService {
         });
     }
 
+    static async updateStatus(subTarefaId: number) {
+        const subTarefa = await prisma.subTarefa.findUnique({
+            where: {
+                id: subTarefaId,
+            },
+        });
+
+        if (!subTarefa) {
+            throw new HttpError("Subtarefa not found", 404);
+        }
+
+        await prisma.subTarefa.update({
+            where: {
+                id: subTarefaId,
+            },
+            data: {
+                concluida: !subTarefa.concluida,
+            },
+        });
+    }
+
     static async delete(subTarefaId: string) {
         await prisma.subTarefa.delete({
             where: {

@@ -7,6 +7,7 @@ const tarefaRouter = Router();
 tarefaRouter.post("/", TarefaController.create);
 tarefaRouter.get("/:userToken", TarefaController.getAllFromUser);
 tarefaRouter.put("/" , TarefaController.update);
+tarefaRouter.patch("/:id", TarefaController.updateStatus);
 tarefaRouter.delete("/:id", TarefaController.delete);
             
 export default tarefaRouter;

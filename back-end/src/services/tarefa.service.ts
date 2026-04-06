@@ -54,6 +54,27 @@ export class TarefaService {
         });
     }
 
+    static async updateStatus(tarefaId: number) {
+        const tarefa = await prisma.tarefa.findUnique({
+            where: {
+                id: tarefaId
+            }
+        });
+
+        if (!tarefa) {
+            throw new HttpError("Tarefa not found", 404);
+        }
+
+        await prisma.tarefa.update({
+            where: {
+                id: tarefaId
+            },
+            data: {
+                concluida: !tarefa.concluida
+            }
+        });
+    }
+
     static async delete(tarefaId: number) {
         // deletar tarefas com subtarefas associadas
         await prisma.subTarefa.deleteMany({
