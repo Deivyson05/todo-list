@@ -9,7 +9,7 @@
         "unicap",
         "serviço"
     ],
-    "main": "src/server.ts",
+    "main": "src/index.ts",
     "type": "module",
     "dependencies": {
         "@prisma/adapter-pg": "^7.5.0",
