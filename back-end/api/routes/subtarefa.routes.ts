@@ -1,4 +1,3 @@
-.js
 import { Router } from "express";
 import { SubTarefaController } from "../controllers/subtarefa.controller.js";
             
