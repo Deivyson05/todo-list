@@ -30,7 +30,7 @@
     "scripts": {
         "start": "tsx api/index.ts",
         "dev": "tsx watch api/index.ts",
-        "build": "tsc",
+        "build": "prisma generate && tsup api/index.ts --format esm --out-dir dist",
         "nova-entidade": "tsx cli/novaEntidade.ts",
         "excluir-entidade": "tsx cli/excluirEntidade.ts"
     },
