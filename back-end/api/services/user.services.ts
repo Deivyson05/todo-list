@@ -1,7 +1,7 @@
-import { prisma } from "../../lib/prisma";
-import { comparePassword, hashPassword } from "../core/hash";
-import { HttpError } from "../core/httpError";
-import createToken from "../core/token";
+import { prisma } from "../../lib/prisma.js";
+import { comparePassword, hashPassword } from "../core/hash.js";
+import { HttpError } from "../core/httpError.js";
+import createToken from "../core/token.js";
 
 export class UserService {
     static async createUser(body: any) {

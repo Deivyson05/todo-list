@@ -1,7 +1,7 @@
 import { Router } from "express";
-import userRouter from "./user.route";
-import tarefaRouter from "./tarefa.routes";
-import subtarefaRouter from "./subtarefa.routes";
+import userRouter from "./user.route.js";
+import tarefaRouter from "./tarefa.routes.js";
+import subtarefaRouter from "./subtarefa.routes.js";
 
 const routes = Router();
 

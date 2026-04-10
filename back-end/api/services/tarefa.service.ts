@@ -1,7 +1,7 @@
 
 import { title } from "node:process";
-import { prisma } from "../../lib/prisma";
-import { HttpError } from "../core/httpError";
+import { prisma } from "../../lib/prisma.js";
+import { HttpError } from "../core/httpError.js";
 import { parse } from "node:path";
 
 export class TarefaService {
