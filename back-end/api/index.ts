@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import { prisma } from "../lib/prisma";
-import routes from "./routes";
+import routes from "./index";
 
 //import router from "./routes/index";
 
