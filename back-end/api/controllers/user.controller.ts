@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { HttpError } from "../core/httpError";
-import { UserService } from "../services/user.services";
-import { middleware } from "../core/middeware";
+import { UserService } from "../services/user.services.js";
+import { middleware } from "../core/middeware.js";
 
 export class UserController {
     static async createUser(req: Request, res: Response) {

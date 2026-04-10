@@ -1,8 +1,8 @@
 
 import { Request, Response } from "express";
-import { HttpError } from "../core/httpError";
-import { TarefaService } from "../services/tarefa.service";
-import { middleware } from "../core/middeware";
+import { HttpError } from "../core/httpError.js";
+import { TarefaService } from "../services/tarefa.service.js";
+import { middleware } from "../core/middeware.js";
         
 export class TarefaController {
     static async create(req: Request, res: Response) {

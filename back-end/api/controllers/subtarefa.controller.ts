@@ -1,8 +1,8 @@
 
 import { Request, Response } from "express";
-import { HttpError } from "../core/httpError";
-import { SubTarefaService } from "../services/subtarefa.service";
-import { middleware } from "../core/middeware";
+import { HttpError } from "../core/httpError.js";
+import { SubTarefaService } from "../services/subtarefa.service.js";
+import { middleware } from "../core/middeware.js";
         
 export class SubTarefaController {
     static async create(req: Request, res: Response) {
