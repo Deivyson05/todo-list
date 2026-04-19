@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function Index() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { data, isFetching } = useQuery({
+  const { data, isFetching, error } = useQuery({
     queryKey: ["tarefas"],
     queryFn: getTarefas,
   });
@@ -19,6 +19,7 @@ export default function Index() {
     mutationFn: adicionarTarefa,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tarefas"] });
+      
     },
   });
 
@@ -36,7 +37,7 @@ export default function Index() {
       ]);
       return;
     }
-    mutation.mutate({ descricao });
+    mutation.mutate({ title: descricao, description: "" });
     setDescricao("");
   }
 
@@ -63,31 +64,31 @@ export default function Index() {
               <CheckCircleIcon color="blue" />
               <Text className=" font-bold">Concluído</Text>
             </View>
-            <Text className="">{data?.filter((t: any) => t.concluida).length || 0}</Text>
+            <Text className="">{data?.filter((t: any) => t.completed).length || 0}</Text>
           </TouchableOpacity>
         </View>
 
         <Text className=" text-xl font-bold">Todas as tarefas</Text>
         <View className="gap-2 w-full">
           {data?.map((t: any) => {
-            if (t.concluida == true) {
+            if (t.completed == true) {
               return null;
             } else {
 
               return (
                 <TouchableOpacity
                   className="bg-gray-200 w-full px-4 py-4 rounded-xl flex-row items-center gap-4"
-                  key={t.objectId}
-                  onPress={() => handleconcluirTarefaPress(t.objectId)}
+                  key={t.id}
+                  onPress={() => handleconcluirTarefaPress(t.id)}
                 >
                   <View className="w-[20px] h-[20px] border border-black rounded-full" />
-                  <Text>{t.descricao}</Text>
+                  <Text>{t.title}</Text>
                 </TouchableOpacity>
               );
             }
           })}
         </View>
-
+          {error && <Text style={{color: 'red'}}>{String(error)}</Text>}
         {/* Input fixo que sobe com teclado */}
         <View className="w-full flex-row gap-2 mt-auto">
           <TextInput

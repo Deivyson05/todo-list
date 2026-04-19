@@ -52,7 +52,7 @@ export class TarefaService {
                 id: Number(id)
             },
             data: {
-                status: !tarefa?.completed
+                completed: !tarefa?.completed
             }
         });
     }
