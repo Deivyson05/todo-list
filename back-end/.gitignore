@@ -1,5 +1,3 @@
-node_modules
-/generated/prisma
-Dockerfile
+node_modules/
 .env
 /generated/prisma

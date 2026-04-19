@@ -1,36 +1,16 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String
-  password String
-  token    String @unique
-  tarefas  Tarefa[]
-}
-
 model Tarefa {
-  id           Int         @id @default(autoincrement())
-  title        String
-  description  String?
-  dataAgendada DateTime?
-  userToken    String
-  concluida    Boolean     @default(false)
-  subTarefas   SubTarefa[]
-  user         User        @relation(fields: [userToken], references: [token])
-}
-
-model SubTarefa {
-  id        Int     @id @default(autoincrement())
-  title     String
-  tarefaId  Int
-  concluida Boolean @default(false)
-  tarefa    Tarefa  @relation(fields: [tarefaId], references: [id])
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  completed   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
