@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { TarefaService } from "../services/tarefa.service.js";
-import { middleware } from "../core/middleware";
+import { middleware } from "../core/middleware.js";
         
 export class TarefaController {
     static async create(req: Request, res: Response) {
