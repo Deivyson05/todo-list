@@ -1,6 +1,5 @@
-
 import { Router } from "express";
-import { TarefaController } from "../controllers/tarefa.controller";
+import { TarefaController } from "../controllers/tarefa.controller.js";
             
 const tarefaRouter = Router();
             
@@ -11,4 +10,3 @@ tarefaRouter.patch("/:id/concluir", TarefaController.concluir);
 tarefaRouter.delete("/:id", TarefaController.delete);
             
 export default tarefaRouter;
-    

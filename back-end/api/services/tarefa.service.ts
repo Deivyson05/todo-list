@@ -31,7 +31,7 @@ export class TarefaService {
             data: {
                 title: body.title,
                 description: body.description,
-                status: body.status
+                status: body.completed
             }
         });
     }
@@ -56,6 +56,7 @@ export class TarefaService {
             }
         });
     }
+
 
     static async delete(id: string){
         if(!id){
