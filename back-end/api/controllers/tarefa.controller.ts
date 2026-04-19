@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { TarefaService } from "../services/tarefa.service";
+import { TarefaService } from "../services/tarefa.service.js";
 import { middleware } from "../core/middleware";
         
 export class TarefaController {

@@ -1,5 +1,5 @@
-import { prisma } from "../../lib/prisma";
-import { HttpError } from "../core/httpError";
+import { prisma } from "../../lib/prisma.js";
+import { HttpError } from "../core/httpError.js";
 
 export class TarefaService {
     static async create(body: any) {

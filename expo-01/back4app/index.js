@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBase = "https://parseapi.back4app.com/classes/Tarefa";
+const urlBase = "https://todo-list-jade-phi-77.vercel.app/api";
 
 export async function getTarefas() {
   const response = await axios.get(urlBase + "/list");
