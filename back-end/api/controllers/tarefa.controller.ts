@@ -24,6 +24,14 @@ export class TarefaController {
             return res.status(200).json({ message: "updated successfully" });
         }, res);
     }
+
+    static async concluir(req: Request, res: Response) {
+        middleware(async () => {
+            const { id } = req.params;
+            await TarefaService.concluir(id);
+            return res.status(200).json({ message: "tarefa concluída" });
+        }, res);
+    }
     
     static async delete(req: Request, res: Response){
         middleware (async()=> {

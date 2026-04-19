@@ -35,7 +35,28 @@ export class TarefaService {
             }
         });
     }
-    
+
+    static async concluir(id: string){
+        if(!id){
+            throw new HttpError("ID is required", 400);
+        }
+
+        const tarefa = await prisma.tarefa.findUnique({
+            where: {
+                id: Number(id)
+            }
+        });
+
+        await prisma.tarefa.update({
+            where: {
+                id: Number(id)
+            },
+            data: {
+                status: !tarefa?.completed
+            }
+        });
+    }
+
     static async delete(id: string){
         if(!id){
             throw new HttpError("ID is required", 400);
